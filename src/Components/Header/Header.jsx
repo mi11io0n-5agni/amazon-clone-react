@@ -1,12 +1,9 @@
 import "./header.css";
+import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 
 function Header() {
   const { cartItems } = useCart();
-
-  const goToCart = () => {
-    window.location.href = "/cart";
-  };
 
   return (
     <header className="header">
@@ -20,9 +17,9 @@ function Header() {
         />
       </div>
 
-      <div className="cart" onClick={goToCart}>
+      <Link to="/cart" className="cart">
         🛒 Cart ({cartItems.length})
-      </div>
+      </Link>
     </header>
   );
 }

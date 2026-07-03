@@ -1,6 +1,14 @@
-.product-grid {
+/* .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  background: #f1f3f6;
+  min-height: 100vh;
+} */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding: 20px;
   background: #f1f3f6;

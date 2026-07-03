@@ -6,11 +6,18 @@ export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (product) => {
-    setCartItems([...cartItems, product]);
+
+    setCartItems((prevItems) => {
+      const updatedItems = [...prevItems, product];
+
+      return updatedItems;
+    });
   };
 
   const removeFromCart = (id) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
+    setCartItems((prevItems) =>
+      prevItems.filter((item) => item.id !== id)
+    );
   };
 
   return (
