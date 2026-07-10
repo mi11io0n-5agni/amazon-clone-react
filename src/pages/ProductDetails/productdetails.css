@@ -1,0 +1,21 @@
+.details-container {
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+}
+
+.details-image {
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+}
+
+.details-info {
+  flex: 1;
+}
+
+.details-info button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  cursor: pointer;
+}

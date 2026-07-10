@@ -42,3 +42,8 @@
 .button:hover {
   background: #f7ca00;
 }
+.rating {
+  color: orange;
+  font-size: 18px;
+  margin: 10px 0;
+}

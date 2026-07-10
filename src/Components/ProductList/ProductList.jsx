@@ -2,11 +2,26 @@ import ProductCard from "../ProductCard/ProductCard";
 import products from "../../data/products";
 import "./productList.css";
 
-function ProductList() {
+function ProductList({ selectedCategory, searchTerm }) {
+  const filteredProducts = products.filter((product) => {
+    const categoryMatch =
+      selectedCategory === "All" ||
+      product.category === selectedCategory;
+
+    const searchMatch = product.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    return categoryMatch && searchMatch;
+  });
+
   return (
-    <div className="product-grid">
-      {products.map((item) => (
-        <ProductCard key={item.id} product={item} />
+    <div className="product-list">
+      {filteredProducts.map((product) => (
+        <ProductCard
+          key={product.id}
+          product={product}
+        />
       ))}
     </div>
   );

@@ -2,7 +2,7 @@ import "./header.css";
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 
-function Header() {
+function Header({ setSearchTerm }) {
   const { cartItems } = useCart();
 
   return (
@@ -14,6 +14,7 @@ function Header() {
           type="text"
           placeholder="Search products..."
           className="search-input"
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
 
