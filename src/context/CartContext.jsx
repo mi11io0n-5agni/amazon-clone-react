@@ -50,11 +50,15 @@ export function CartProvider({ children }) {
       prevItems.filter((item) => item.id !== id)
     );
   };
+  const clearCart = () => {
+  setCartItems([]);
+};
 
   return (
     <CartContext.Provider
       value={{
         cartItems,
+        clearCart,
         addToCart,
         increaseQuantity,
         decreaseQuantity,

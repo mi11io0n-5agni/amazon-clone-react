@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import "./cart.css";
 
@@ -35,7 +36,7 @@ function Cart() {
 
                   <p>${item.price}</p>
 
-                  <div>
+                  <div className="quantity-controls">
                     <button
                       onClick={() =>
                         decreaseQuantity(item.id)
@@ -44,10 +45,7 @@ function Cart() {
                       -
                     </button>
 
-                    <span>
-                      {" "}
-                      {item.quantity}{" "}
-                    </span>
+                    <span>{item.quantity}</span>
 
                     <button
                       onClick={() =>
@@ -71,9 +69,13 @@ function Cart() {
           </div>
 
           <div className="cart-total">
-            <h3>
-              Total: ${total.toFixed(2)}
-            </h3>
+            <h3>Total: ${total.toFixed(2)}</h3>
+
+            <Link to="/checkout">
+              <button>
+                Proceed to Checkout
+              </button>
+            </Link>
           </div>
         </>
       )}
