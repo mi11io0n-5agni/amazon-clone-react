@@ -12,10 +12,27 @@ function Checkout() {
     0
   );
 
-  const placeOrder = () => {
-    clearCart();
-    navigate("/order-success");
+ const placeOrder = () => {
+  const existingOrders =
+    JSON.parse(localStorage.getItem("orders")) || [];
+
+  const newOrder = {
+    id: Date.now(),
+    date: new Date().toLocaleDateString(),
+    items: cartItems,
+    total: total,
+    status: "Processing",
   };
+
+  localStorage.setItem(
+    "orders",
+    JSON.stringify([...existingOrders, newOrder])
+  );
+
+  clearCart();
+
+  navigate("/order-success");
+};
 
   return (
     <div className="checkout-container">

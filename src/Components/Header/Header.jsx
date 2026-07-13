@@ -3,34 +3,56 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext";
 
-function Header({ setSearchTerm }) {
+function Header({
+  setSearchTerm,
+  darkMode,
+  setDarkMode,
+}) {
   const { cartItems } = useCart();
   const { user, logout } = useAuth();
 
   return (
     <header className="header">
-      {/* Logo */}
       <Link to="/" className="logo">
         ShopEasy
       </Link>
 
-      {/* Search */}
       <div className="search-container">
         <input
           type="text"
           placeholder="Search products..."
           className="search-input"
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) =>
+            setSearchTerm(e.target.value)
+          }
         />
       </div>
 
-      {/* User Section */}
+      <button
+        className="theme-btn"
+        onClick={() =>
+          setDarkMode(!darkMode)
+        }
+      >
+        {darkMode ? "☀️ Light" : "🌙 Dark"}
+      </button>
+
       <div className="user-section">
         {user ? (
           <>
-            <span className="welcome-text">
+            <Link
+              to="/profile"
+              className="profile-link"
+            >
               Hello, {user.name}
-            </span>
+            </Link>
+
+            <Link
+              to="/orders"
+              className="profile-link"
+            >
+              Orders
+            </Link>
 
             <button
               className="logout-btn"
@@ -41,19 +63,27 @@ function Header({ setSearchTerm }) {
           </>
         ) : (
           <>
-            <Link to="/login" className="auth-link">
+            <Link
+              to="/login"
+              className="auth-link"
+            >
               Login
             </Link>
 
-            <Link to="/register" className="auth-link">
+            <Link
+              to="/register"
+              className="auth-link"
+            >
               Register
             </Link>
           </>
         )}
       </div>
 
-      {/* Cart */}
-      <Link to="/cart" className="cart">
+      <Link
+        to="/cart"
+        className="cart-link"
+      >
         🛒 Cart ({cartItems.length})
       </Link>
     </header>

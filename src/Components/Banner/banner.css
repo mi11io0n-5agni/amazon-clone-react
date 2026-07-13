@@ -30,3 +30,6 @@
 .right {
   right: 10px;
 }
+body.dark-mode .banner img {
+  filter: brightness(60%);
+}

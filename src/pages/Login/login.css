@@ -14,6 +14,7 @@
   flex-direction: column;
   gap: 15px;
   background: white;
+  transition: 0.3s;
 }
 
 .login-form h2 {
@@ -41,4 +42,18 @@
 .error {
   color: red;
   text-align: center;
+}
+
+/* Dark Mode */
+
+body.dark-mode .login-form {
+  background: #1e1e1e;
+  color: white;
+  border: 1px solid #444;
+}
+
+body.dark-mode .login-form input {
+  background: #2c2c2c;
+  color: white;
+  border: 1px solid #555;
 }

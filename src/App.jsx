@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./Components/Header/Header";
@@ -15,19 +15,38 @@ import Checkout from "./pages/Checkout/Checkout";
 
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import OrderSuccess from "./pages/OrderSuccess/OrderSuccess";
+import Profile from "./pages/Profile/Profile";
+import Orders from "./pages/Orders/Orders";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
 
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
+
   return (
     <div>
-      <Header setSearchTerm={setSearchTerm} />
+      <Header
+        setSearchTerm={setSearchTerm}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+      />
 
       <Navbar setSelectedCategory={setSelectedCategory} />
 
       <Routes>
-        {/* Home Page */}
         <Route
           path="/"
           element={
@@ -42,16 +61,13 @@ function App() {
           }
         />
 
-        {/* Cart */}
         <Route path="/cart" element={<Cart />} />
 
-        {/* Product Details */}
         <Route
           path="/product/:id"
           element={<ProductDetails />}
         />
 
-        {/* Authentication */}
         <Route path="/login" element={<Login />} />
 
         <Route
@@ -59,7 +75,6 @@ function App() {
           element={<Register />}
         />
 
-        {/* Protected Checkout */}
         <Route
           path="/checkout"
           element={
@@ -68,10 +83,29 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         <Route
-        path="/order-success"
-        element={<OrderSuccess />}
-      />
+          path="/order-success"
+          element={<OrderSuccess />}
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/orders"
+          element={
+            <ProtectedRoute>
+              <Orders />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
 
       <Footer />
