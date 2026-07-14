@@ -18,6 +18,7 @@ import OrderSuccess from "./pages/OrderSuccess/OrderSuccess";
 import Profile from "./pages/Profile/Profile";
 import Orders from "./pages/Orders/Orders";
 import Payment from "./pages/Payment/Payment";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -115,6 +116,10 @@ function App() {
               <Orders />
             </ProtectedRoute>
           }
+        />
+        <Route
+          path="/admin"
+          element={<AdminDashboard />}
         />
       </Routes>
 

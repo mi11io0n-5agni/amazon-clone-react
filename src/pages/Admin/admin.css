@@ -1,0 +1,43 @@
+.admin-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.admin-form input {
+  padding: 12px;
+}
+
+.admin-form button {
+  padding: 12px;
+  background: #febd69;
+  border: none;
+  cursor: pointer;
+}
+
+.admin-products {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.admin-product {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border: 1px solid #ddd;
+}
+
+.admin-product button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+}

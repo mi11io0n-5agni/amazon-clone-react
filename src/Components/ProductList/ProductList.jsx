@@ -1,8 +1,10 @@
 import ProductCard from "../ProductCard/ProductCard";
-import products from "../../data/products";
+import { useProducts } from "../../context/ProductContext";
 import "./productList.css";
 
 function ProductList({ selectedCategory, searchTerm }) {
+  const { products } = useProducts();
+
   const filteredProducts = products.filter((product) => {
     const categoryMatch =
       selectedCategory === "All" ||
