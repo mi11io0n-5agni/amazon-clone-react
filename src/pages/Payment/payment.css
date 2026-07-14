@@ -1,0 +1,60 @@
+.payment-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.payment-card {
+  width: 500px;
+  background: white;
+  padding: 35px;
+  border-radius: 15px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+.payment-card h1 {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.payment-card label {
+  display: block;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.payment-card input {
+  margin-right: 10px;
+}
+
+.payment-card button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 14px;
+  background: #ffd814;
+  border: 1px solid #fcd200;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.payment-card button:hover {
+  background: #f7ca00;
+}
+
+/* Dark Mode */
+
+body.dark-mode .payment-card {
+  background: #1e1e1e;
+  color: white;
+}
+
+body.dark-mode .payment-card label {
+  border-color: #444;
+}

@@ -29,9 +29,10 @@ function Checkout() {
     JSON.stringify([...existingOrders, newOrder])
   );
 
-  clearCart();
+  // clearCart();
 
-  navigate("/order-success");
+  // navigate("/order-success");
+  navigate("/payment");
 };
 
   return (

@@ -17,6 +17,7 @@ import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import OrderSuccess from "./pages/OrderSuccess/OrderSuccess";
 import Profile from "./pages/Profile/Profile";
 import Orders from "./pages/Orders/Orders";
+import Payment from "./pages/Payment/Payment";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -83,6 +84,15 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+      <Route
+      path="/payment"
+      element={
+        <ProtectedRoute>
+          <Payment />
+        </ProtectedRoute>
+      }
+    />
 
         <Route
           path="/order-success"
