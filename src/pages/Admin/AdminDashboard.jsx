@@ -11,10 +11,8 @@ function AdminDashboard() {
 
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
-  const [category, setCategory] =
-    useState("");
-  const [image, setImage] =
-    useState("");
+  const [category, setCategory] = useState("");
+  const [image, setImage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,20 +31,77 @@ function AdminDashboard() {
     setImage("");
   };
 
+  /* ======================
+      Analytics
+  ======================= */
+
+  const totalProducts = products.length;
+
+  const totalRevenue = products.reduce(
+    (sum, product) => sum + product.price,
+    0
+  );
+
+  const averageRating =
+    products.length > 0
+      ? (
+          products.reduce(
+            (sum, product) =>
+              sum + product.rating,
+            0
+          ) / products.length
+        ).toFixed(1)
+      : 0;
+
+  const highestPricedProduct =
+    products.reduce((max, product) =>
+      product.price > max.price
+        ? product
+        : max
+    );
+
   return (
     <div className="admin-container">
-      <h1>Admin Dashboard</h1>
+      <h1>📊 Sales Analytics Dashboard</h1>
 
-      <h2>
-        Total Products: {products.length}
-      </h2>
+      {/* Analytics Cards */}
+      <div className="analytics-grid">
+        <div className="analytics-card">
+          <h2>📦 Products</h2>
+          <p>{totalProducts}</p>
+        </div>
+
+        <div className="analytics-card">
+          <h2>💰 Revenue</h2>
+          <p>${totalRevenue.toFixed(2)}</p>
+        </div>
+
+        <div className="analytics-card">
+          <h2>⭐ Average Rating</h2>
+          <p>{averageRating}</p>
+        </div>
+
+        <div className="analytics-card">
+          <h2>🏆 Most Expensive</h2>
+          <p>
+            {highestPricedProduct.title}
+          </p>
+          <small>
+            $
+            {highestPricedProduct.price}
+          </small>
+        </div>
+      </div>
+
+      {/* Add Product Form */}
+      <h2>Add New Product</h2>
 
       <form
         className="admin-form"
         onSubmit={handleSubmit}
       >
         <input
-          placeholder="Title"
+          placeholder="Product Title"
           value={title}
           onChange={(e) =>
             setTitle(e.target.value)
@@ -87,15 +142,25 @@ function AdminDashboard() {
         </button>
       </form>
 
+      {/* Product List */}
+      <h2>Manage Products</h2>
+
       <div className="admin-products">
         {products.map((product) => (
           <div
             key={product.id}
             className="admin-product"
           >
-            <span>
-              {product.title}
-            </span>
+            <div>
+              <strong>
+                {product.title}
+              </strong>
+
+              <p>
+                ${product.price} •{" "}
+                {product.category}
+              </p>
+            </div>
 
             <button
               onClick={() =>
