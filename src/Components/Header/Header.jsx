@@ -2,6 +2,7 @@ import "./header.css";
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext";
+import logo from "../../assets/images/logo1.jpg";
 
 function Header({
   setSearchTerm,
@@ -13,8 +14,16 @@ function Header({
 
   return (
     <header className="header">
-      <Link to="/" className="logo">
-        ShopEasy
+            <Link to="/" className="logo">
+        <img
+          src={logo}
+          alt="Ethio-Gebeya Logo"
+          className="logo-image"
+        />
+
+        <span className="logo-text">
+          Ethio-Gebeya
+        </span>
       </Link>
 
       <div className="search-container">

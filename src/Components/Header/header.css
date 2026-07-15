@@ -6,79 +6,217 @@
   justify-content: space-between;
   padding: 15px 30px;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
+/* =====================
+   Logo
+===================== */
+
 .logo {
-  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   text-decoration: none;
+  
+}
+
+.logo-image {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.logo-text {
+  color: white;
   font-size: 28px;
   font-weight: bold;
 }
 
+/* =====================
+   Search
+===================== */
+
 .search-container {
   flex: 1;
+  min-width: 250px;
 }
 
 .search-input {
-  width: 90%;
-  padding: 10px;
+  width: 95%;
+  padding: 10px 15px;
   border: none;
   border-radius: 5px;
   font-size: 16px;
 }
 
+/* =====================
+   User Section
+===================== */
+
 .user-section {
   display: flex;
   align-items: center;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
-.auth-link {
+.auth-link,
+.profile-link,
+.cart-link {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  transition: 0.3s;
 }
 
-.auth-link:hover {
+.auth-link:hover,
+.profile-link:hover,
+.cart-link:hover {
   color: #febd69;
 }
 
-.welcome-text {
-  font-weight: bold;
-}
-
-.logout-btn {
+.logout-btn,
+.theme-btn {
   background-color: #febd69;
   border: none;
   padding: 8px 14px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  transition: 0.3s;
 }
 
-.logout-btn:hover {
-  opacity: 0.9;
-}
-
-.cart {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.cart:hover {
-  color: #febd69;
-}
-
-.theme-btn {
-  background-color: #febd69;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
+.logout-btn:hover,
 .theme-btn:hover {
   opacity: 0.9;
+}
+
+.welcome-text {
+  font-weight: bold;
+}
+
+/* =====================
+   Tablet
+===================== */
+
+@media (max-width: 992px) {
+  .header {
+    padding: 15px 20px;
+  }
+
+  .logo-text {
+    font-size: 24px;
+  }
+
+  .logo-image {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* =====================
+   Mobile
+===================== */
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .logo {
+    justify-content: center;
+  }
+
+  .logo-text {
+    font-size: 22px;
+  }
+
+  .logo-image {
+    width: 45px;
+    height: 45px;
+  }
+
+  .search-container {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .user-section {
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .cart-link {
+    display: block;
+    margin-top: 10px;
+  }
+}
+
+/* =====================
+   Small Phones
+===================== */
+
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 20px;
+  }
+
+  .logo-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .auth-link,
+  .profile-link,
+  .cart-link {
+    font-size: 14px;
+  }
+
+  .logout-btn,
+  .theme-btn {
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+
+  .search-input {
+    font-size: 14px;
+  }
+}
+
+/* =====================
+   Dark Mode
+===================== */
+
+body.dark-mode .header {
+  background-color: #0d1117;
+}
+
+body.dark-mode .search-input {
+  background: #2d333b;
+  color: white;
+}
+
+body.dark-mode .search-input::placeholder {
+  color: #bbb;
+}
+
+body.dark-mode .logo-text,
+body.dark-mode .auth-link,
+body.dark-mode .profile-link,
+body.dark-mode .cart-link {
+  color: white;
+}
+
+body.dark-mode .auth-link:hover,
+body.dark-mode .profile-link:hover,
+body.dark-mode .cart-link:hover {
+  color: #febd69;
 }

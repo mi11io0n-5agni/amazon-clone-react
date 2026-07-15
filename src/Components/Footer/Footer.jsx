@@ -164,8 +164,8 @@ function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <h2>ShopEasy</h2>
-        <p>© 2026 ShopEasy Clone Project by Milion Sagni</p>
+        <h2>Ethio-Gebeya</h2>
+        © 2026 Ethio-Gebeya by Milion Sagni
       </div>
     </footer>
   );
